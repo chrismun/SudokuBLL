@@ -90,6 +90,14 @@ public class LatinSquare {
 		for (int i = 0; i < this.LatinSquare.length; i++) {
 			
 			row = this.getRow(i);
+			for (int j = 0; j < this.LatinSquare.length; j++) {
+				column = this.getColumn(j);
+				if (!hasAllValues(row, column)) {
+					isLatinSquare = false;
+					break;
+				}
+			}
+			
 			column = this.getColumn(i);
 			
 			if (hasDuplicates(row)) {
@@ -100,10 +108,7 @@ public class LatinSquare {
 				isLatinSquare = false;
 				break;
 			}
-			if (!hasAllValues(row, column)) {
-				isLatinSquare = false;
-				break;
-			}
+			
 		}
 		
 		
@@ -112,22 +117,18 @@ public class LatinSquare {
 	
 	public boolean containsZero() {
 		int[] row;
-		int[] column;
 		boolean containsZero = false;
+		
 		for (int i = 0; i < this.LatinSquare.length; i++) {
 			row = getRow(i);
-			column = getColumn(i);
 			for(int j = 0; j < this.LatinSquare.length; j++) {
 				if(row[j] == 0) {
 					containsZero = true;
 					break;
 				}
-				if(column[j] == 0) {
-					containsZero = true;
-					break;
-				}
 			}
 		}
+			
 		return containsZero;
 	}
 
